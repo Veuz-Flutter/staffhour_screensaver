@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+:root {
+    --primary-color: rgb(138, 241, 53); /* Lime Green */
+    --secondary-color: rgb(15, 41, 35); /* Dark Green/Teal */
+    --text-color: rgb(255, 255, 255);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Background Gradient Glow */
+body::before {
+    content: '';
+    position: absolute;
+    width: 150vw;
+    height: 150vh;
+    background: radial-gradient(circle, rgba(138, 241, 53, 0.1) 0%, rgba(15, 41, 35, 0) 70%);
+    top: -25%;
+    left: -25%;
+    z-index: 0;
+    animation: pulseGlow 10s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.1); opacity: 0.8; }
+}
+
+/* Container */
+.container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 3rem 5rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.container:hover {
+    transform: scale(1.02);
+}
+
+/* Time */
+.time-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 10px;
+}
+
+#time {
+    font-size: 8rem;
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(180deg, #fff, var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.ampm {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-transform: uppercase;
+}
+
+/* Date */
+#date {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-top: 10px;
+    letter-spacing: 2px;
+    opacity: 0.9;
+}
+
+/* Christmas Decor */
+.xmas-decor {
+    position: absolute;
+    top: -40px;
+    right: -30px;
+    font-size: 4rem;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+    animation: swing 3s infinite ease-in-out alternate;
+}
+
+@keyframes swing {
+    0% { transform: rotate(-10deg); }
+    100% { transform: rotate(10deg); }
+}
+
+/* Snowflakes */
+.snowflake {
+    position: absolute;
+    top: -10px;
+    color: #fff;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    text-shadow: 0 0 5px #000;
+    user-select: none;
+    z-index: 1;
+    pointer-events: none;
+    animation-name: snowflakes-fall, snowflakes-shake;
+    animation-duration: 10s, 3s;
+    animation-timing-function: linear, ease-in-out;
+    animation-iteration-count: infinite, infinite;
+    animation-play-state: running, running;
+}
+
+@keyframes snowflakes-fall {
+    0% { top: -10%; }
+    100% { top: 100%; }
+}
+
+@keyframes snowflakes-shake {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(80px); }
+}
+
+/* Randomize Snowflakes */
+.snowflake:nth-of-type(0) { left: 1%; animation-delay: 0s, 0s; }
+.snowflake:nth-of-type(1) { left: 10%; animation-delay: 1s, 1s; }
+.snowflake:nth-of-type(2) { left: 20%; animation-delay: 6s, .5s; }
+.snowflake:nth-of-type(3) { left: 30%; animation-delay: 4s, 2s; }
+.snowflake:nth-of-type(4) { left: 40%; animation-delay: 2s, 2s; }
+.snowflake:nth-of-type(5) { left: 50%; animation-delay: 8s, 3s; }
+.snowflake:nth-of-type(6) { left: 60%; animation-delay: 6s, 2s; }
+.snowflake:nth-of-type(7) { left: 70%; animation-delay: 2.5s, 1s; }
+.snowflake:nth-of-type(8) { left: 80%; animation-delay: 1s, 0s; }
+.snowflake:nth-of-type(9) { left: 90%; animation-delay: 3s, 1.5s; }
+.snowflake:nth-of-type(10) { left: 25%; animation-delay: 2s, 0s; }
+.snowflake:nth-of-type(11) { left: 65%; animation-delay: 4s, 2.5s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    #time { font-size: 5rem; }
+    #date { font-size: 1.2rem; }
+    .container { padding: 2rem; width: 90%; }
+    .xmas-decor { font-size: 3rem; top: -25px; right: -15px; }
+}
